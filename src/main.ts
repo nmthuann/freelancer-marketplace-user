@@ -1,8 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
+
+const PORT = 3344;
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const app = await NestFactory.create(AppModule, { cors: true });
+  await app.listen(
+    PORT, 
+    () => console.log(`Server connect successfully !!! .......\nhttp://localhost:${PORT}`)
+  );
 }
 bootstrap();
