@@ -6,8 +6,9 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { AccountEntity } from '../account/account.entity';
-import { ProfileEntity } from '../profile/entities/profile.entity';
+import { AccountEntity } from '../../account/account.entity';
+import { ProfileEntity } from '../../profile/entities/profile.entity';
+import { UserPaymentEntity } from './user-payment.entity';
 
 
 /**
@@ -49,4 +50,8 @@ export class UserEntity {
   @OneToOne(() => ProfileEntity, (profile) => profile.user) // , { cascade: true }
   @JoinColumn({ name: 'profile_id' })
   profile: ProfileEntity;
+
+  @OneToOne(() => UserPaymentEntity, (user_payment) => user_payment.user) // , { cascade: true }
+  @JoinColumn({ name: 'user_payment_id' })
+  user_payment: UserPaymentEntity;
 }

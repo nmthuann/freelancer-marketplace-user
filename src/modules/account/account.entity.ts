@@ -2,7 +2,7 @@
 import { Entity,  Column, CreateDateColumn, DeepPartial, PrimaryColumn, BeforeInsert, JoinColumn, OneToOne, AfterUpdate, AfterInsert } from "typeorm"
 import { BaseEntity } from "../base/base.entity";
 import { Role } from "src/common/constants/enums/role.enum";
-import { UserEntity } from "../user/user.entity";
+import { UserEntity } from "../user/entities/user.entity";
 
 
 @Entity({name:'Accounts'})

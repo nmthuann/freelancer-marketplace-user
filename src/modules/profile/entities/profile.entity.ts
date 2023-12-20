@@ -2,7 +2,7 @@ import { Level } from "src/common/constants/enums/level.enum";
 import { BaseEntity } from "src/modules/base/base.entity";
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ProfileAttributeValueEntity } from "./profile.value.entity";
-import { UserEntity } from "src/modules/user/user.entity";
+import { UserEntity } from "src/modules/user/entities/user.entity";
 
 
 

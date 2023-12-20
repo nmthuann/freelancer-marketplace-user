@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { AccountEntity } from './modules/account/account.entity';
-import { UserEntity } from './modules/user/user.entity';
+import { UserEntity } from './modules/user/entities/user.entity';
 import { ProfileEntity } from './modules/profile/entities/profile.entity';
 import { ProfileAttributeEntity } from './modules/profile/entities/profile.attribute.entity';
 import { ProfileAttributeValueEntity } from './modules/profile/entities/profile.value.entity';
