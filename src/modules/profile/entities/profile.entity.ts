@@ -1,8 +1,10 @@
-import { Level } from "src/common/constants/enums/level.enum";
-import { BaseEntity } from "src/modules/base/base.entity";
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ProfileAttributeValueEntity } from "./profile.value.entity";
+import { AbstractBaseEntity } from "src/modules/base/basa.abstract.entity";
 import { UserEntity } from "src/modules/user/entities/user.entity";
+
+
+
 
 
 
@@ -15,11 +17,11 @@ import { UserEntity } from "src/modules/user/entities/user.entity";
  * value
  */
 @Entity({name:'Profiles'})
-export class ProfileEntity extends BaseEntity {
+export class ProfileEntity extends AbstractBaseEntity { //
     @PrimaryGeneratedColumn()
     profile_id: number;
 
-    @Column({default: Level.NEW_SELLER})
+    @Column({default: 'NEW_SELLER'})
     level: string;
 
     @Column()

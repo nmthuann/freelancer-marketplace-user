@@ -15,6 +15,7 @@ export class ProfileAttributeValueEntity {
     // FK: entity
     @ManyToOne(() => ProfileEntity, (profile) => profile.profile_attribute_values, {
         eager: true,
+        
     }) //
     @JoinColumn({ name: 'profile_id' })
     profile: ProfileEntity;

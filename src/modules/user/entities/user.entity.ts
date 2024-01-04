@@ -6,7 +6,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { AccountEntity } from '../../account/account.entity';
+import { AccountEntity } from '../../account/entities/account.entity';
 import { ProfileEntity } from '../../profile/entities/profile.entity';
 import { UserPaymentEntity } from './user-payment.entity';
 

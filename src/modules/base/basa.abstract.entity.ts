@@ -1,12 +1,14 @@
 import { 
+
     CreateDateColumn, 
     DeleteDateColumn, 
-    Entity, 
     UpdateDateColumn 
 } from "typeorm";
 
-@Entity()
-export abstract class BaseEntity{
+// @Entity()
+export abstract class AbstractBaseEntity {
+  // @PrimaryColumn()
+  // id: number;
 
 @CreateDateColumn({
   name: 'created_at',
@@ -19,7 +21,7 @@ createdAt: Date;
   default: () => 'CURRENT_TIMESTAMP(6)',
   onUpdate: 'CURRENT_TIMESTAMP(6)',
 })
-updatedAt: Date;
+updatedAt: Date;  
 
     @DeleteDateColumn({
         name: 'deleted_at',
