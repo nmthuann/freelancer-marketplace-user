@@ -27,6 +27,9 @@ export const AppDataSource = new DataSource({
 
 ## cli:
 
+> TypeORM 0.3.6 doesn't have cli.migrationsDir property to specify path for migration:run #8964
+> [Text Link](https://github.com/typeorm/typeorm/issues/8964)
+
 ```shell
 yarn typeorm migration:create ./src/migration/PostRefactoring
 ```
@@ -87,3 +90,9 @@ yarn typeorm-ts-node-commonjs migration:revert ./src/migrations -d ./src/data-so
 2. TableInheritance -> no abstract class
 
 -   Xác định được ChildEntity()
+
+```shell
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config -n src/config/typeorm.config-migrations.ts",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/config/typeorm.config-migrations.ts",
+    "db:refresh": "yarn typeorm:cli schema:drop && yarn migration:run && yarn seed:run"
+```
