@@ -1,13 +1,14 @@
 import { MigrationInterface, QueryRunner } from "typeorm"
 
-export class RenameRoleEntity2nd1704449341833 implements MigrationInterface {
+export class RenameRolesTable1704702878627 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.renameTable('roles', 'role_entity');
+        await queryRunner.renameTable('role_entity', 'roles');
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.renameTable('role_entity', 'roles');
+        await queryRunner.renameTable('roles', 'role_entity');
     }
+
 
 }

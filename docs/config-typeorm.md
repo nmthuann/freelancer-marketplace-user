@@ -96,3 +96,6 @@ yarn typeorm-ts-node-commonjs migration:revert ./src/migrations -d ./src/data-so
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed -n src/config/typeorm.config-migrations.ts",
     "db:refresh": "yarn typeorm:cli schema:drop && yarn migration:run && yarn seed:run"
 ```
+
+yarn typeorm-ts-node-commonjs migration:create ./src/database/migrations/RenameRolesTable
+yarn typeorm-ts-node-commonjs migration:run -d ./src/database/datasource.ts

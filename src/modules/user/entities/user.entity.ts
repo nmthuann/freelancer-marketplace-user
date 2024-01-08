@@ -1,10 +1,12 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
 import { AccountEntity } from '../../account/entities/account.entity';
 import { ProfileEntity } from '../../profile/entities/profile.entity';
@@ -17,6 +19,10 @@ import { UserPaymentEntity } from './user-payment.entity';
  */
 
 @Entity({ name: 'Users' })
+// @Unique(["user_payment_id", "email", "profile_id"]) 
+@Index('unique_user_payment', ['user_payment'], { unique: true })
+@Index('unique_user_profile', ['profile'], { unique: true })
+@Index('unique_user_account', ['account'], { unique: true })
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   user_id: string;
@@ -42,7 +48,7 @@ export class UserEntity {
   @Column({ type: 'nvarchar', length: 10, nullable: false })
   phone: string;
 
-  @OneToOne(() => AccountEntity, (account) => account.user) 
+  @OneToOne(() => AccountEntity, (account) => account.user, { nullable: false }) 
   //   (account) =>  account.email{ cascade: true }
   @JoinColumn({ name: 'email' }) // fix here
   account: AccountEntity;
@@ -51,7 +57,11 @@ export class UserEntity {
   @JoinColumn({ name: 'profile_id' })
   profile: ProfileEntity;
 
-  @OneToOne(() => UserPaymentEntity, (user_payment) => user_payment.user) // , { cascade: true }
+  @OneToOne(
+    () => UserPaymentEntity, 
+    (user_payment) => user_payment.user,
+    ) // , { cascade: true }
   @JoinColumn({ name: 'user_payment_id' })
+ 
   user_payment: UserPaymentEntity;
 }

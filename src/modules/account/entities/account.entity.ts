@@ -22,9 +22,6 @@ export class AccountEntity extends AbstractBaseEntity {
     @Column({default: null})
     refresh_token: string;
 
-    // @Column({default: 'user'}) 
-    // role: string
-
     @ManyToOne(
         () => RoleEntity, 
         (role) => role.accounts, {

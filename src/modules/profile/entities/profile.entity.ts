@@ -27,9 +27,6 @@ export class ProfileEntity extends AbstractBaseEntity { //
     @Column()
     occupation: string;
 
-    @Column()
-    status: string;
-
     @OneToMany(
         () => ProfileAttributeValueEntity,
         (profile_attribute_value) => profile_attribute_value.profile,
@@ -37,6 +34,7 @@ export class ProfileEntity extends AbstractBaseEntity { //
     profile_attribute_values: ProfileAttributeValueEntity[];
 
     
-    @OneToOne(() => UserEntity, (user) => user.profile) // specify inverse side as a second parameter
+    @OneToOne(() => UserEntity, (user) => user.profile) 
+    // specify inverse side as a second parameter
     user: UserEntity;
 }

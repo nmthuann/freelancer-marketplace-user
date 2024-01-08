@@ -6,7 +6,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 
 
-@Entity({ name: 'roles' })// { name: 'roles' }
+@Entity()// { name: 'roles' }
 export class RoleEntity extends AbstractBaseEntity {
   @PrimaryGeneratedColumn()
   role_id: number;
