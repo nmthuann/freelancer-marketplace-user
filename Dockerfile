@@ -5,9 +5,10 @@ FROM node:20-alpine3.18
 WORKDIR /nmthuann/src/user-service
 
 # Copy package.json and yarn.lock to the working directory
-COPY package*.json yarn.lock ./
+COPY ./*.json yarn.lock ./
 
-# Install the application dependencies using Yarn
+# Install the application dependencies using Yarn => tải node_modules
+# COPY ./node_modules
 RUN yarn install
 
 # Copy the rest of the application code to the working directory

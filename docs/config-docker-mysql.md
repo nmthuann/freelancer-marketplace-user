@@ -47,3 +47,7 @@ FLUSH PRIVILEGES;
 ```shell
 docker build --tag freelancer-marketplace-user1.0 .
 ```
+
+docker-compose up -d --no-deps --build freelancer-marketplace-user
+docker build -t freelancer-marketplace-user1.0 .
+docker-compose restart freelancer-marketplace-user

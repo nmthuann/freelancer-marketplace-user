@@ -4,33 +4,42 @@ networks:
   default:
 
 services:
-
-  # mysql-container:
-  #   image: mysql:8.2.0
-  #   ports:
-  #     - "3307:3306"
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=123456
-  #     - MYSQL_DATABASE=FreelancerMarketplaceUser
-  #   networks:
-  #     - default
-
-  freelancer-marketplace-user:
-    # image: your-nest-app-image
+  mysql-container:
+    container_name: mysql-db-container
+    image: mysql:8.2.0
     ports:
-      - "3334:3334"
-    build:
-      dockerfile: Dockerfile  # Reference the Dockerfile
-      context: .
-    # depends_on:
-    #   - mysql-container
+      - "3307:3306"
+    volumes:
+      - mysqldata:/etc/mysql/conf.d 
+    env_file: ./.env
     environment:
-      - DATABASE_HOST=mysql-container
-      - DATABASE_PORT=3306
-      - DATABASE_USERNAME=admin-user-service
-      - DATABASE_PASSWORD=123456
-      - DATABASE_NAME=FreelancerMarketplaceUser
+      - MYSQL_ROOT_PASSWORD=$MYSQL_DB_PASSWORD
+      - MYSQL_DATABASE=$DATABASE_NAME
     networks:
       - default
 
+  freelancer-marketplace-user:
+    container_name: freelancer-marketplace-user
+    image: freelancer-marketplace-user1.0
+    ports:
+      - "3334:3334"
+    depends_on:
+      - mysql-container
+    build:
+      dockerfile: Dockerfile  # Reference the Dockerfile
+      context: .
+    #  
+    env_file:
+      - ./.env
+    environment:
+      - DATABASE_HOST=$DATABASE_HOST
+      - DATABASE_PORT=3306
+      - DATABASE_USERNAME=$DATABASE_USERNAME #admin-user-service
+      - DATABASE_PASSWORD=$MYSQL_DB_PASSWORD
+      - DATABASE_NAME=$DATABASE_NAME
+    networks:
+      - default
+
+volumes:
+  mysqldata:
   

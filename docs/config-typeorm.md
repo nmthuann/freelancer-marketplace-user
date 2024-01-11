@@ -99,3 +99,4 @@ yarn typeorm-ts-node-commonjs migration:revert ./src/migrations -d ./src/data-so
 
 yarn typeorm-ts-node-commonjs migration:create ./src/database/migrations/RenameRolesTable
 yarn typeorm-ts-node-commonjs migration:run -d ./src/database/datasource.ts
+docker-compose run --rm freelancer-marketplace-user yarn typeorm-ts-node-commonjs migration:run -d ./src/database/datasource.ts
