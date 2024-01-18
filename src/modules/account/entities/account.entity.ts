@@ -1,9 +1,21 @@
 
-import { Entity,  Column,  PrimaryColumn, BeforeInsert, JoinColumn, OneToOne, AfterUpdate, AfterInsert, OneToMany, ManyToOne } from "typeorm"
+import { 
+    Entity,  
+    Column,  
+    PrimaryColumn, 
+    BeforeInsert, 
+    JoinColumn, 
+    OneToOne, 
+    AfterUpdate, 
+    AfterInsert, 
+    OneToMany, 
+    ManyToOne
+} from "typeorm"
 
 import { UserEntity } from "../../user/entities/user.entity";
 import { RoleEntity } from "../../user/entities/role.entity";
 import { AbstractBaseEntity } from "src/modules/base/basa.abstract.entity";
+import { AuthMethodEntity } from "./auth-method.entity";
 
 
 
@@ -22,6 +34,10 @@ export class AccountEntity extends AbstractBaseEntity {
     @Column({default: null})
     refresh_token: string;
 
+    @Column()
+    sub: string;
+
+
     @ManyToOne(
         () => RoleEntity, 
         (role) => role.accounts, {
@@ -29,6 +45,15 @@ export class AccountEntity extends AbstractBaseEntity {
     }) 
     @JoinColumn({ name: 'role_id' })
     role: RoleEntity;
+
+
+    @ManyToOne(
+        () => AuthMethodEntity, 
+        (auth_method) => auth_method.accounts, {
+        eager: true,
+    }) 
+    @JoinColumn({ name: 'auth_method_id' })
+    auth_method: AuthMethodEntity;
 
 
     @OneToOne(() => UserEntity, (user) => user.account) // { cascade: true }

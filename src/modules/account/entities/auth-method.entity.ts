@@ -6,17 +6,20 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 
 
-@Entity({ name: 'Roles' })// { name: 'roles' }
-export class RoleEntity extends AbstractBaseEntity {
+@Entity({ name: 'AuthMethods' })// { name: 'roles' }
+export class AuthMethodEntity {
   @PrimaryGeneratedColumn()
-  role_id: number;
+  auth_method_id: number;
 
   @Column({nullable: false})
-  name: string;
+  auth_method_name: string;
+
+  @Column()
+  description: string;
 
   @OneToMany(
         () => AccountEntity,
-        (account) => account.role,
+        (account) => account.auth_method,
     )
     accounts: AccountEntity[];
 }

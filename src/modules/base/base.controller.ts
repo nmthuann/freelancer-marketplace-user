@@ -1,5 +1,5 @@
 import { Body, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { IBaseService } from "./base.interface";
+import { IBaseService } from "./base.service.interface";
 
 export class BaseController<T>{
 

@@ -1,5 +1,5 @@
 import { DeleteResult, ObjectId, Repository } from 'typeorm';
-import { IBaseService } from './base.interface';
+import { IBaseService } from './base.service.interface';
 
 export abstract class BaseService<T> implements IBaseService<T> {
   constructor(
